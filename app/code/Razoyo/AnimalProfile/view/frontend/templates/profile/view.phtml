@@ -4,7 +4,16 @@
  */
 ?>
 <p><?= $block->getGreeting() ?></p>
+
 <div id="animalid-photo"></div>
+<select name="animal" id="animal-opt">
+    <option value="" selected></option> 
+    <?php foreach ($block->getAnimalOpt() as $profImage): ?>
+        <option value="<?= $profImage['value'] ?>" <?= $profImage['value'] == $animalProfile ? 'selected' : '' ?>>
+            <?= $profImage['label'] ?>
+        </option>
+    <?php endforeach; ?>
+</select>
 <script>
     require(['jquery', 'domReady!'], function ($) {
         return $.ajax({
